@@ -59,19 +59,17 @@ tripButton.addEventListener('click', function() {
 
 //math function 
       
-      var time = distance / speed;
-      time = Math.round(time * 100) / 100; // round it to two decimals
-      var actualMPG = (mpg > 60) ? Math.max(0, mpg - (speed - 60) * 2) : mpg;
+  var time = distance / speed;
+  time = Math.round(time * 100) / 100; // round it to two decimals
+  var actualMPG = (mpg > 60) ? Math.max(0, mpg - (speed - 60) * 2) : mpg;
 
-      var cost = (distance / actualMPG * cost);
-      cost = Math.round(cost * 100) / 100;
+  var cost = (distance / actualMPG * cost);
+  cost = Math.round(cost * 100) / 100;
 
+  var tripAnswer = document.getElementById("trip-answer")
 
-
-    var tripAnswer = document.getElementById("trip-answer")
-
-    tripAnswer.className = "show"
-    document.getElementById('trip-answer-alert').innerHTML = "The journey will take " + time + " hours. " + " It will cost you $" + cost;
+  tripAnswer.className = "show"
+  document.getElementById('trip-answer-alert').innerHTML = "The journey will take " + time + " hours. " + " It will cost you $" + cost;
 
 
 // end of trip event listener 
@@ -98,14 +96,14 @@ bmiButton.addEventListener('click', function() {
 
           answer = (mass / (height * height)).toFixed(2);
           console.log("testing:" + answer);
-      } else {
+    } else {
         console.log('Something went wrong');
       }
 
-    var bmiAnswer = document.getElementById("bmi-answer")
+  var bmiAnswer = document.getElementById("bmi-answer")
 
-    bmiAnswer.className = "show"
-    document.getElementById('bmi-answer-alert').innerHTML = "Your BMI is " + answer;
+  bmiAnswer.className = "show"
+  document.getElementById('bmi-answer-alert').innerHTML = "Your BMI is " + answer;
 
 
 // end of BMI event listener 
@@ -113,32 +111,30 @@ bmiButton.addEventListener('click', function() {
 
 // start of Mortgage function
 
-var mortgageButton = document.getElementById('mortgage-calc');
-mortgageButton.addEventListener('click', function() { 
+  var mortgageButton = document.getElementById('mortgage-calc');
+  mortgageButton.addEventListener('click', function() { 
 
   var answer;
 
   //get units and personal info from user input, puts to string, pharse to float.
+
   var loan = parseFloat(document.getElementById('mortgage-loan').value);
   var apr = parseFloat(document.getElementById('mortgage-apr').value);
   var months = parseFloat(document.getElementById('mortgage-term').value);
-
-//math function 
   
-var temp = Math.pow((1 + apr), months);
-      var answer = loan * apr * temp / (temp - 1);
-      answer = Math.round(answer * 100) / 100; // round to 2 decimals
+//math function 
 
+  apr = apr/months;
+  var temp = Math.pow((1 + apr), months);
+  var answer = loan * ((apr * temp) / (temp - 1));
+  answer = Math.round(answer); // round to 2 decimals
 
-
-  //answer = (loan * (apr * Math.pow((1+apr), months) / (Math.pow((1+apr), months) - 1)));
-  console.log(answer);
 // render answer      
 
-    var mortgageAnswer = document.getElementById("mortgage-answer")
+  var mortgageAnswer = document.getElementById("mortgage-answer")
 
-    mortgageAnswer.className = "show"
-    document.getElementById('mortgage-answer-alert').innerHTML = "monthy repayments: " + answer;
+  mortgageAnswer.className = "show"
+  document.getElementById('mortgage-answer-alert').innerHTML = "monthy repayments: " + answer;
 
 
 // end of Mortgage event listener 
