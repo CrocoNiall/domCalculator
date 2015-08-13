@@ -111,5 +111,37 @@ bmiButton.addEventListener('click', function() {
 // end of BMI event listener 
 });
 
+// start of Mortgage function
+
+var mortgageButton = document.getElementById('mortgage-calc');
+mortgageButton.addEventListener('click', function() { 
+
+  var answer;
+
+  //get units and personal info from user input, puts to string, pharse to float.
+  var loan = parseFloat(document.getElementById('mortgage-loan').value);
+  var apr = parseFloat(document.getElementById('mortgage-apr').value);
+  var months = parseFloat(document.getElementById('mortgage-term').value);
+
+//math function 
+  
+var temp = Math.pow((1 + apr), months);
+      var answer = loan * apr * temp / (temp - 1);
+      answer = Math.round(answer * 100) / 100; // round to 2 decimals
+
+
+
+  //answer = (loan * (apr * Math.pow((1+apr), months) / (Math.pow((1+apr), months) - 1)));
+  console.log(answer);
+// render answer      
+
+    var mortgageAnswer = document.getElementById("mortgage-answer")
+
+    mortgageAnswer.className = "show"
+    document.getElementById('mortgage-answer-alert').innerHTML = "monthy repayments: " + answer;
+
+
+// end of Mortgage event listener 
+});
 
 
